@@ -11,14 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701011357) do
+ActiveRecord::Schema.define(version: 20150707023003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "artist_types", force: :cascade do |t|
+    t.string "name", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string  "name",           null: false
+    t.string  "description",    null: false
+    t.integer "user_id",        null: false
+    t.integer "artist_type_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
-    t.string   "..,     default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -29,6 +40,13 @@ ActiveRecord::Schema.define(version: 20150701011357) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name",                          null: false
+    t.string   "last_name",                           null: false
+    t.string   "city",                                null: false
+    t.string   "state",                               null: false
+    t.string   "description",                         null: false
+    t.string   "website"
+    t.integer  "artist_type_id",                      null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
