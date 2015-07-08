@@ -11,4 +11,21 @@ class User < ActiveRecord::Base
   validates :state, presence: true
   validates :description, presence: true
   validates :artist_type, presence: true
+
+  def self.search(search)
+   where("first_name ILIKE ?
+         OR last_name ILIKE ?
+         OR description ILIKE ?
+         OR artist_type_id.name ILIKE ?
+         OR city ILIKE ?
+         OR state ILIKE ?
+         OR email ILIKE ? ", "%#{search}%",
+         "%#{search}%", "%#{search}%", "%#{search}%",
+         "%#{search}%", "%#{search}%", "%#{search}%"
+        )
+  end
+
+  def is_admin?
+    role == 'admin'
+  end
 end

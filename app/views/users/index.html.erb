@@ -1,0 +1,20 @@
+
+<%= form_tag(users_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search for matches" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if @users.present? %>
+  <%= render @users %>
+<% else %>
+  <p>There are no matches for yoru search.</p>
+<% end %>
+
+<h1>Your matches</h1>
+  <% @users.each do |user| %>
+    <div class="panel">
+      <p><%= link_to user.first_name user.last_name, user_path(user) %></p>
+    </div>
+  <% end %>
+
+<%= paginate @users %>
