@@ -11,20 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707023003) do
+ActiveRecord::Schema.define(version: 20150709032500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "artist_types", force: :cascade do |t|
+  create_table "art_types", force: :cascade do |t|
     t.string "name", null: false
   end
 
+  create_table "project_arts", force: :cascade do |t|
+    t.integer "art_type_id", null: false
+    t.integer "project_id",  null: false
+  end
+
+  create_table "project_memberships", force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.integer "user_id",    null: false
+  end
+
   create_table "projects", force: :cascade do |t|
-    t.string  "name",           null: false
-    t.string  "description",    null: false
-    t.integer "user_id",        null: false
-    t.integer "artist_type_id"
+    t.string  "name",                                null: false
+    t.string  "description",                         null: false
+    t.boolean "collaborators_wanted", default: true
+  end
+
+  create_table "user_arts", force: :cascade do |t|
+    t.integer "user_id",     null: false
+    t.integer "art_type_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,7 +60,7 @@ ActiveRecord::Schema.define(version: 20150707023003) do
     t.string   "state",                               null: false
     t.string   "description",                         null: false
     t.string   "website"
-    t.integer  "artist_type_id",                      null: false
+    t.boolean  "admin",                               null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
