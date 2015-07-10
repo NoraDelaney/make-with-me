@@ -12,4 +12,24 @@ feature "User searches for a match" do
 # [ ] If I do not enter valid search information, I should see an error message
 # and remain on the page.
 
+  before(:each) do
+    FactoryGirl.create(:user, art_type: 'writing')
+    FactoryGirl.create(:user, description: 'poetry')
+  end
+
+  scenario 'valid search' do
+    visit planets_path
+    fill_in 'Search', with: 'poe'
+    click_button 'Submit'
+
+    expect(page).to have_content('poetry')
+    expect(page).to_not have_content('writing')
+  end
+
+  scenario 'no valid search parameter specified' do
+    visit users_path
+    click_button 'Submit'
+
+    expect(page).to have_content('Please specify a search phrase')
+  end
 end

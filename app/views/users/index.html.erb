@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="columns large-12">
+    <%= form_tag users_path, method: :get do %>
+      <%= label_tag :q, "Search" %>
+      <%= text_field_tag :q, params[:q] %>
+      <%= submit_tag 'Submit' %>
+    <% end %>
+
+    <% if !@users.empty? %>
+      <table>
+        <tr>
+          <th>Name</th>
+        </tr>
+
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.first_name, user_path(user) %> <%= link_to user.last_name, user_path(user) %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+</div>

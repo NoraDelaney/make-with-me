@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'pg_search'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -47,6 +48,7 @@ end
 
 
 gem 'rspec-rails', group: [:development, :test]
+gem 'faker', group: [:development, :test]
 gem 'capybara', group: [:development, :test]
 gem 'launchy', group: [:development, :test]
 gem 'factory_girl', group: [:development, :test]
