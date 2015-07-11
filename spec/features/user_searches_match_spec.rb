@@ -13,7 +13,7 @@ feature "User searches for a match" do
 # and remain on the page.
 
   before(:each) do
-    FactoryGirl.create(:user, description: 'poetry')
+    FactoryGirl.create(:user, username: 'Jean', description: 'poetry')
   end
 
   scenario 'valid search' do
@@ -21,8 +21,8 @@ feature "User searches for a match" do
     fill_in 'Search', with: 'poe'
     click_button 'Submit'
 
-    expect(page).to have_content('poetry')
-    expect(page).to_not have_content('writing')
+    expect(page).to have_content('Jean')
+    expect(page).to_not have_content('Please specify a search phrase')
   end
 
   scenario 'no valid search parameter specified' do
