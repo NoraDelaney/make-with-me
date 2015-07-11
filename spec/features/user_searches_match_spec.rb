@@ -13,12 +13,11 @@ feature "User searches for a match" do
 # and remain on the page.
 
   before(:each) do
-    FactoryGirl.create(:user, art_type: 'writing')
     FactoryGirl.create(:user, description: 'poetry')
   end
 
   scenario 'valid search' do
-    visit planets_path
+    visit users_path
     fill_in 'Search', with: 'poe'
     click_button 'Submit'
 

@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="columns large-12">
+    <h1> <%= @user.username %> </h1>
+    <div class="panel">
+      <span><b>First name:</b> <%= @user.first_name %></span><br />
+      <span><b>Last name:</b> <%= @user.last_name %></span><br />
+      <span><b>Description:</b> <%= @user.description %></span><br />
+      <span><b>City:</b> <%= @user.city %></span><br />
+      <span><b>State:</b> <%= @user.state %></span><br />
+      <% if user.website != nil %>
+      <span><b>Website:</b> <%= @user.website %></span><br />
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -15,12 +15,13 @@ class User < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true
   validates :description, presence: true
-  validates :admin, presence: true
+  validates :username, presence: true
+
 
   include PgSearch
   pg_search_scope :search,
-    :against => :name,
-    :using => {
-      :tsearch => {:prefix => true}
+    against: [:first_name, :last_name, :username, :description, :city, :state, :website],
+    using: {
+      tsearch: {prefix: true}
     }
 end

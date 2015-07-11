@@ -11,8 +11,8 @@ FactoryGirl.define do
     state { Faker::Address.state }
     description { Faker::Company.bs }
     website { Faker::Internet.url }
+    username { Faker::Internet.user_name }
     admin false
-
   end
 
 end

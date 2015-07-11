@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-
-
   def index
     if params[:q] == ''
       flash[:notice] = 'Please specify a search phrase'
@@ -37,7 +35,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :email, :encrypted_password, :first_name, :last_name, :description, :city, :state,
+      :email, :encrypted_password, :username, :first_name, :last_name, :description, :city, :state,
       :website,
     )
   end
