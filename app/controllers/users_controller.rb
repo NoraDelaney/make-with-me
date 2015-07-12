@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     if params[:q] == ''
       flash[:notice] = 'Please specify a search phrase'
@@ -10,7 +9,6 @@ class UsersController < ApplicationController
       @users = User.all
     end
   end
-
 
   def show
     @user = User.find(params[:id])
