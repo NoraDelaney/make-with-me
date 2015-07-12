@@ -1,0 +1,14 @@
+<h1>Conversations</h1>
+<h2>Inbox</h2>
+<ul>
+  <%= render collection: mailbox.inbox, partial: 'conversation' %>
+</ul>
+<h2>Sentbox</h2>
+<ul>
+  <%= render collection: mailbox.sentbox, partial: 'conversation' %>
+</ul>
+<h2>Trash</h2>
+<ul>
+  <%= render collection: mailbox.trash, partial: 'conversation' %>
+</ul>
+<%= link_to 'Start Conversation', :new_conversation %>
