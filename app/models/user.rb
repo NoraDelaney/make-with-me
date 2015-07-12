@@ -4,15 +4,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
- acts_as_messageable
+  acts_as_messageable
 
- def name
-   username
- end
+  def name
+    username
+  end
 
- def mailboxer_email(object)
-   email
- end
+  def mailboxer_email(_object)
+    email
+  end
 
   has_many :user_arts
   has_many :art_types, through: :user_arts

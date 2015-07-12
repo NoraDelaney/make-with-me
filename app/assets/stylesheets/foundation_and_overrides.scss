@@ -113,7 +113,12 @@ $font-family-sans-serif: "Cabin", Roboto, "Helvetica Neue", Helvetica, Arial, sa
 // $tuatara     : #444444;
 // $oil         : #333333;
 // $jet         : #222222;
-// $black       : #000000;
+$black: #000000;
+$salmon: #ce8689;
+$pale-blue: #e6f5f4;
+$table-neutral: #faf2f3;
+$topbar-teal: #86cecb;
+$dark-teal: #6ba4a2;
 
 // We use these as default colors throughout
 // $primary-color: #008CBA;
@@ -464,7 +469,7 @@ $font-family-sans-serif: "Cabin", Roboto, "Helvetica Neue", Helvetica, Arial, sa
 // We use these to control button border styles.
 // $button-border-width: 0;
 // $button-border-style: solid;
-$button-bg-color: #CE8689;
+$button-bg-color: $salmon;
 // $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
 // $button-border-color: $button-bg-hover;
 // $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
@@ -986,7 +991,7 @@ $button-bg-color: #CE8689;
 // $include-html-panel-classes: $include-html-classes;
 
 // We use these to control the background and border styles
-$panel-bg: scale-color(#E6F5F4, $lightness: -5%);
+$panel-bg: scale-color($pale-blue, $lightness: -5%);
 // $panel-border-style: solid;
 // $panel-border-size: 1px;
 // $callout-panel-bg: scale-color($primary-color, $lightness: 94%);
@@ -1292,8 +1297,8 @@ $panel-bg: scale-color(#E6F5F4, $lightness: -5%);
 // $include-html-table-classes: $include-html-classes;
 
 // These control the background color for the table and even rows
-$table-bg: #FAF2F3;
-$table-even-row-bg: #E6F5F4;
+$table-bg: $table-neutral;
+$table-even-row-bg: $pale-blue;
 
 // These control the table cell border style
 // $table-border-style: solid;
@@ -1400,7 +1405,7 @@ $table-even-row-bg: #E6F5F4;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: #86CECB;
+$topbar-bg-color: $topbar-teal;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -1412,7 +1417,7 @@ $topbar-bg-color: #86CECB;
 // $topbar-title-font-size: rem-calc(17);
 
 // Set the link colors and styles for top-level nav
- $topbar-link-color: #000000;
+$topbar-link-color: $black;
 // $topbar-link-color-hover: $white;
 // $topbar-link-color-active: $white;
 // $topbar-link-color-active-hover: $white;
@@ -1420,11 +1425,11 @@ $topbar-bg-color: #86CECB;
 // $topbar-link-font-size: rem-calc(13);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 // $topbar-link-bg: $topbar-bg;
-$topbar-link-bg-hover: #6BA4A2;
+$topbar-link-bg-hover: $dark-teal;
 // $topbar-link-bg-color-hover: $charcoal;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
-$topbar-link-font-family: 'Cabin';
+$topbar-link-font-family: "Cabin";
 // $topbar-link-text-transform: none;
 // $topbar-link-padding: ($topbar-height / 3);
 // $topbar-back-link-size: rem-calc(18);

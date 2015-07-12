@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 20150712034434) do
     t.string   "last_name",                              null: false
     t.string   "city",                                   null: false
     t.string   "state",                                  null: false
-    t.string   "description",                            null: false
+    t.string   "description"
     t.string   "website"
     t.boolean  "admin",                  default: false, null: false
     t.string   "username",                               null: false

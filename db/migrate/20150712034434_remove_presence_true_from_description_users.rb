@@ -1,6 +1,6 @@
 class RemovePresenceTrueFromDescriptionUsers < ActiveRecord::Migration
   def up
-    change_column :users, :description, :string
+    change_column :users, :description, :string, null: true
   end
 
   def down

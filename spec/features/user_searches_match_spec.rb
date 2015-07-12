@@ -18,8 +18,8 @@ feature "User searches for a match" do
 
   scenario 'valid search' do
     visit users_path
-    fill_in 'Search', with: 'poe'
-    click_button 'Submit'
+    fill_in :q, with: 'poe'
+    click_button 'Search'
 
     expect(page).to have_content('Jean')
     expect(page).to_not have_content('Please specify a search phrase')
@@ -27,7 +27,7 @@ feature "User searches for a match" do
 
   scenario 'no valid search parameter specified' do
     visit users_path
-    click_button 'Submit'
+    click_button 'Search'
 
     expect(page).to have_content('Please specify a search phrase')
   end

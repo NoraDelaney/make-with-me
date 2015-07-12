@@ -7,13 +7,17 @@ class ConversationsController < ApplicationController
     recipients = User.where(email: recipient_emails).all
 
     conversation = current_user.
-      send_message(recipients, *conversation_params(:body, :subject)).conversation
+      send_message(
+      recipients, *conversation_params(:body, :subject)
+      ).conversation
 
     redirect_to conversation_path(conversation)
   end
 
   def reply
-    current_user.reply_to_conversation(conversation, *message_params(:body, :subject))
+    current_user.reply_to_conversation(
+    conversation, *message_params(:body, :subject)
+    )
     redirect_to conversation_path(conversation)
   end
 
@@ -50,7 +54,7 @@ class ConversationsController < ApplicationController
       case subkeys.size
       when 0 then self
       when 1 then self[subkeys.first]
-      else subkeys.map{|k| self[k] }
+      else subkeys.map { |k| self[k] }
       end
     end
   end
