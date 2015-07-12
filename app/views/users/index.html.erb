@@ -1,11 +1,13 @@
 <div class="row">
   <div class="columns large-12">
-    <%= form_tag users_path, method: :get do %>
-      <%= label_tag :q, "Search" %>
-      <%= text_field_tag :q, params[:q] %>
-      <%= submit_tag 'Submit' %>
-    <% end %>
-
+    <br>
+    <h3>
+      <div class="small-10 small-offset-1 columns">
+      Want to work with someone on a creative project? <br>
+      Find users and projects that match your interests.
+    </div>
+    </h3>
+    <div class="small-8 small-offset-5 columns">
     <% if !@users.empty? %>
       <table>
         <tr>
@@ -19,5 +21,6 @@
         <% end %>
       </table>
     <% end %>
+    </div
   </div>
 </div>

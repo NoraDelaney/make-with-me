@@ -1,0 +1,16 @@
+<div class="panel">
+<%= form_for :conversation, url: :conversations do |f| %>
+
+  <%= f.label :recipients %>
+  <%= f.text_field :recipients %>
+
+  <%= f.label :subject %>
+  <%= f.text_field :subject %>
+
+  <%= f.label :body, as: :text %>
+  <%= f.text_field :body, as: :text %>
+
+    <%= f.submit "Submit", class: "button tiny radius" %>
+    
+  </div>
+<% end %>
