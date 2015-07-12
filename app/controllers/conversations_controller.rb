@@ -8,7 +8,8 @@ class ConversationsController < ApplicationController
 
     conversation = current_user.
       send_message(
-      recipients, *conversation_params(:body, :subject)
+        recipients,
+        *conversation_params(:body, :subject)
       ).conversation
 
     redirect_to conversation_path(conversation)
@@ -16,7 +17,8 @@ class ConversationsController < ApplicationController
 
   def reply
     current_user.reply_to_conversation(
-    conversation, *message_params(:body, :subject)
+      conversation,
+      *message_params(:body, :subject)
     )
     redirect_to conversation_path(conversation)
   end
