@@ -1,0 +1,10 @@
+<h1>All users</h1>
+  <% @users.each do |user| %>
+    <div class="panel">
+      <p><%= link_to user.first_name user.last_name, user_path(user) %></p>
+    </div>
+  <% end %>
+
+  <h1>Search members</h1>
+
+<%= paginate @users %>
