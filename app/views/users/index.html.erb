@@ -1,17 +1,36 @@
 <div class="row">
   <div class="columns large-12">
-    <br>
-    <h3>
+
       <div class="small-10 small-offset-1 columns">
-      Want to work with someone on a creative project? <br>
-      Find users and projects that match your interests.
+      <div class="index_head"><h3>Want to work with someone on a creative project?
+      Find users and projects that match your interests.</h3>
+      <div>
     </div>
-    </h3>
-    <div class="small-8 small-offset-5 columns">
+    <div class="row">
+      <div class="small-12 columns">
+    <p><div class="img_space"><%= image_tag "SplitShire-1233.jpg" %></div></p>
+  </div>
+  </div>
+    <div class="row">
+    <div class="small-5 small-offset-2 column">
     <% if !@users.empty? %>
       <table>
         <tr>
-          <th>Name</th>
+          <th><h4>Explore people</h4></th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.username, user_path(user) %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+    </div
+    <div class="small-5 columns">
+    <% if !@users.empty? %>
+      <table>
+        <tr>
+          <th><h4>Explore projects</h4></th>
         </tr>
 
         <% @users.each do |user| %>
