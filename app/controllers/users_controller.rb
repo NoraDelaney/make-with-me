@@ -5,11 +5,11 @@ class UsersController < ApplicationController
     end
     if params[:q].present?
       @users = User.search(params[:q])
-        if @users.empty?
-          flash.now[:alert] = 'Sorry, there were no matches.'
-        else
-          flash.now[:alert] = 'Check out your filtered matches below!'
-        end
+      if @users.empty?
+        flash.now[:alert] = 'Sorry, there were no matches.'
+      else
+        flash.now[:alert] = 'Check out your filtered matches below!'
+      end
     else
       @users = User.all
     end
