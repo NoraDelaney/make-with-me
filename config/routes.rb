@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'homes#index'
+  root 'users#index'
   devise_for :users
   resources :users
   resources :conversations, only: [:index, :show, :new, :create] do
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
-  as :user do
-    get 'users', to: 'users_path', as: :user_root
-  end
+  # as :user do
+  #   get 'users', to: 'users_path', as: :user_root
+  # end
 end
