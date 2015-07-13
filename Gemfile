@@ -47,6 +47,10 @@ group :test do
   gem 'coveralls', require: false
 end
 
+group :production do
+  gem 'puma'
+end
+
 
 gem 'rspec-rails', group: [:development, :test]
 gem 'faker', group: [:development, :test]
