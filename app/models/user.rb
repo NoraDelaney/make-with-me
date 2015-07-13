@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   acts_as_messageable
 
+  mount_uploader :profile_photo, ProfilePhotoUploader
+
   def name
     username
   end

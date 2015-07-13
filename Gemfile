@@ -16,7 +16,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -63,3 +65,4 @@ gem 'valid_attribute', group: [:development, :test]
 gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'devise'
 gem 'foundation-rails'
+gem 'dotenv-rails', group: [:development, :test]
