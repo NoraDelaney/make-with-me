@@ -12,4 +12,9 @@
 !/log/.keep
 /tmp
 /coverage
+
+#Ignore environment variables
 .env
+
+# Ignore uploaded files in test/development
+/public/uploads
