@@ -9,51 +9,20 @@
 </head>
 <body>
 
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">Make With Me</a></h1>
-      </li>
-    </ul>
-
-    <section class="top-bar-section">
-      <ul class="right">
-        <li class="has-form">
-          <form>
-            <div class="row collapse">
-              <div class="large-8 small-9 columns">
-
-              <%= form_tag users_path, method: :get do %>
-                <%= text_field_tag :q, params[:q] %>
-              </div>
-              <div class="large-4 small-3 columns">
-                <%= submit_tag 'Search', class: "tiny button expand" %>
-              <% end %>
-            </div>
-            </div>
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to current_user.username, user_path(current_user) %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
-    </section>
-  </nav>
+  <%= render "layouts/nav" %>
 
   <% flash.keys.each do |type| %>
-  <div data-alert class="flash <%= type %> alert-box radius">
-    <%= flash[type] %>
-    <a href="#" class="close">&times;</a>
-  </div>
-<% end %>
+    <div data-alert class="flash <%= type %> alert-box radius">
+      <%= flash[type] %>
+      <a href="#" class="close">&times;</a>
+    </div>
+  <% end %>
 
-  <div class="row">
-  <div class="small-12 columns">
-    <%= yield %>
+    <div class="row">
+    <div class="small-12 columns">
+      <%= yield %>
+    </div>
   </div>
-</div>
 
   <%= javascript_include_tag 'application' %>
   <%= yield :extra_footer %>
