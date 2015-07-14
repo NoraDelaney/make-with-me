@@ -22,7 +22,7 @@
       <span><b>About me:</b> <%= @user.description %></span><br />
     </div>
 <% if current_user.id == @user.id %>
-      <%= link_to "Edit Profile", edit_user_path(@user), class: "button small radius" %>
+      <%= link_to "Edit Profile Page", edit_user_path(@user), class: "button small radius" %>
     <% end %>
   </div>
 </div>
