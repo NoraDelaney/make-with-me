@@ -9,20 +9,25 @@
 </div>
     <div class="row">
       <div class="columns large-12">
-    <div class="panel">
-      <span><b>First name:</b> <%= @user.first_name %></span><br />
-      <span><b>Last name:</b> <%= @user.last_name %></span><br />
-      <span><b>City:</b> <%= @user.city %></span><br />
-      <span><b>State:</b> <%= @user.state %></span><br />
-      <% if @user.website != nil %>
-      <span><b>Website:</b> <%= @user.website %></span><br />
-      <% end %>
+        <div class="panel">
+          <span><b>First name:</b> <%= @user.first_name %></span><br />
+          <span><b>Last name:</b> <%= @user.last_name %></span><br />
+          <span><b>City:</b> <%= @user.city %></span><br />
+          <span><b>State:</b> <%= @user.state %></span><br />
+          <% if @user.website != nil %>
+          <span><b>Website:</b> <%= @user.website %></span><br />
+          <% end %>
+        </div>
+      </div>
     </div>
+    <% if @user.description != nil %>
     <div class="panel">
       <span><b>About me:</b> <%= @user.description %></span><br />
     </div>
+    <% end %>
 <% if current_user.id == @user.id %>
       <%= link_to "Edit Profile Page", edit_user_path(@user), class: "button small radius" %>
     <% end %>
   </div>
+</div>
 </div>

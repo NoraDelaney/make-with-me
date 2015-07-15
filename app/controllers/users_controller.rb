@@ -42,4 +42,8 @@ class UsersController < ApplicationController
       :description, :city, :state, :website, :profile_photo
     )
   end
+
+  def user_file_params
+    params.require(:user).permit(:user_file, :user_id)
+  end
 end

@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="columns large-12">
+  <h1>
+    Edit your profile and describe yourself and your art.
+  </h1>
+
+
+    <div class="panel">
+    <%= form_for @user do |f| %>
+
+      <%= f.label :first_name %>
+      <%= f.text_area :first_name %>
+
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :description, "About Me" %>
+      <%= f.text_area :description %>
+
+      <%= f.label :profile_photo, "Profile Photo" %><br />
+      <%= f.file_field :profile_photo %>
+
+      <%= f.submit "Edit Profile", class: "button small radius"  %>
+    <%- end -%>
+  </div>    
+  </div>
+</div>
