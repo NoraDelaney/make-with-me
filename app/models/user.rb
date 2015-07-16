@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   end
 
   has_many :user_arts
+  has_many :user_files
   has_many :art_types, through: :user_arts
   has_many :project_memberships
   has_many :projects, through: :project_memberships

@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user_files = @user.user_files
   end
 
   def edit
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(
       :email, :encrypted_password, :username, :first_name, :last_name,
-      :description, :city, :state, :website,
+      :description, :city, :state, :website, :profile_photo
     )
   end
 end

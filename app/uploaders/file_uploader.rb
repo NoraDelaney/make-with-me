@@ -1,6 +1,5 @@
 # encoding: utf-8
-
-class ProfilePhotoUploader < CarrierWave::Uploader::Base
+class FileUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -21,15 +20,13 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
-  def default_url
+  # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
-    ActionController::Base.helpers.asset_path("fallback/" + [
-      version_name,
-      "default.png"
-    ].compact.join('_'))
-
-    # {}"/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  end
+  #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name,
+  #   # "default.png"].compact.join('_'))
+  #
+  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+  # end
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
@@ -43,11 +40,28 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [100, 100]
   end
 
+  version :showcase do
+    process resize_to_fit: [200, 200]
+  end
+
+  version :web_thumb do
+    process :thumbnail_pdf
+  end
+
+  def thumbnail_pdf
+    manipulate! do |img|
+      img.format("png", 1)
+      img.resize("150x150")
+      img = yield(img) if block_given?
+      img
+    end
+  end
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_white_list
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_white_list
+    %w(jpg jpeg gif png pdf doc docx html)
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here,
