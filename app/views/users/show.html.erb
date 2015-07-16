@@ -76,11 +76,12 @@
 <% end %>
 
 <% if !@pdfs.empty? %>
+<div class="panel">
 <h3 class="portfolio_text">PDFs</h3>
 <div class="row">
   <div class="columns large-12">
   <% @pdfs.each do |pdf| %>
-  <div class="columns small-3">
+  <div class="pdf_stuff">
 <div class='user_number' style="visibility: collapse">
     <%= @user.id %>
   </div>
@@ -97,6 +98,7 @@
     <% end %>
   </div>
 <% end %>
+</div>
 </div>
 </div>
 <% end %>
