@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'users#index'
   devise_for :users
+  resources :searches, only: [:index]
   resources :users do
     resources :user_files, except: [:index, :show]
     resources :pdfs, except: [:index, :show]
