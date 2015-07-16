@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user_files = @user.user_files
+    @pdfs = @user.pdfs
   end
 
   def edit

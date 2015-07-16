@@ -26,12 +26,16 @@
     <span><b>About me:</b> <%= @user.description %></span><br />
   </div>
 <% end %>
-<% if current_user.id == @user.id %>
+<% if current_user && current_user.id == @user.id %>
   <%= link_to "Edit Profile Page", edit_user_path(@user), class: "button small radius" %>
 <% end %>
 
-<% if current_user.id == @user.id %>
-  <%= link_to "Add a File to your Portfolio", new_user_user_file_path(@user), class: "button left small radius" %><br />
+<% if current_user && current_user.id == @user.id %>
+  <%= link_to "Add an image to your portfolio", new_user_user_file_path(@user), class: "button left small radius" %><br />
+<% end %>
+
+<% if current_user && current_user.id == @user.id %>
+  <%= link_to "Add a PDF to your Portfolio", new_user_pdf_path(@user), class: "button left small radius" %><br />
 <% end %>
 
 <% @user_files.each do |file| %>
@@ -45,11 +49,29 @@
   <div class="img_space">
     <%= image_tag(file.file_url(:showcase)) %>
   </div>
-  <% if current_user.id == @user.id %>
-    <%= link_to "Change File", edit_user_user_file_path(@user, file),
+  <% if current_user && current_user.id == @user.id %>
+    <%= link_to "Change Image", edit_user_user_file_path(@user, file),
     class: "button tiny radius" %>
-    <%= link_to "Delete File", user_user_file_path(@user, file),
+    <%= link_to "Delete Image", user_user_file_path(@user, file),
     method: :delete, class: "button tiny radius" %>
     <% end %>
   </div>
+  <% end %>
+
+  <% @pdfs.each do |pdf| %>
+  <div class="columns small-3">
+<div class='user_number' style="visibility: collapse">
+    <%= @user.id %>
+  </div>
+  <div class='pdf_number' style="visibility: collapse">
+    <%= pdf.id %>
+  </div>
+    <% pdf.name %>
+    <%= link_to pdf.name, pdf.user_pdf_url %>
+    <% if current_user && current_user.id == @user.id %>
+    <%= link_to "Change PDF", edit_user_pdf_path(@user, pdf),
+     class: "button tiny radius" %>
+    <%= link_to "Delete PDF", user_pdf_path(@user, pdf),
+    method: :delete, class: "button tiny radius" %>
+    <% end %>
 <% end %>
