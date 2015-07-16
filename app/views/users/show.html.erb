@@ -1,33 +1,55 @@
 <div class="row">
   <div class="columns small-2">
-    <div class="img_space"><%= image_tag(@user.profile_photo_url(:thumb)) %>
+    <div class="img_space">
+      <%= image_tag(@user.profile_photo_url(:thumb)) %>
     </div>
   </div>
   <div class="columns small-10">
     <h1> <%= @user.username %> </h1>
   </div>
 </div>
-    <div class="row">
-      <div class="columns large-12">
-        <div class="panel">
-          <span><b>First name:</b> <%= @user.first_name %></span><br />
-          <span><b>Last name:</b> <%= @user.last_name %></span><br />
-          <span><b>City:</b> <%= @user.city %></span><br />
-          <span><b>State:</b> <%= @user.state %></span><br />
-          <% if @user.website != nil %>
-          <span><b>Website:</b> <%= @user.website %></span><br />
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <% if @user.description != nil %>
+<div class="row">
+  <div class="columns large-12">
     <div class="panel">
-      <span><b>About me:</b> <%= @user.description %></span><br />
+      <span><b>First name:</b> <%= @user.first_name %></span><br />
+      <span><b>Last name:</b> <%= @user.last_name %></span><br />
+      <span><b>City:</b> <%= @user.city %></span><br />
+      <span><b>State:</b> <%= @user.state %></span><br />
+      <% if @user.website != nil %>
+      <span><b>Website:</b> <%= @user.website %></span><br />
+      <% end %>
     </div>
-    <% end %>
-<% if current_user.id == @user.id %>
-      <%= link_to "Edit Profile Page", edit_user_path(@user), class: "button small radius" %>
-    <% end %>
   </div>
 </div>
-</div>
+<% if @user.description != nil %>
+  <div class="panel">
+    <span><b>About me:</b> <%= @user.description %></span><br />
+  </div>
+<% end %>
+<% if current_user.id == @user.id %>
+  <%= link_to "Edit Profile Page", edit_user_path(@user), class: "button small radius" %>
+<% end %>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "Add a File to your Portfolio", new_user_user_file_path(@user), class: "button left small radius" %><br />
+<% end %>
+
+<% @user_files.each do |file| %>
+  <div class="columns small-3">
+<div class='user_number' style="visibility: collapse">
+    <%= @user.id %>
+  </div>
+  <div class='user_file_number' style="visibility: collapse">
+    <%= file.id %>
+  </div>
+  <div class="img_space">
+    <%= image_tag(file.file_url(:showcase)) %>
+  </div>
+  <% if current_user.id == @user.id %>
+    <%= link_to "Change File", edit_user_user_file_path(@user, file),
+    class: "button tiny radius" %>
+    <%= link_to "Delete File", user_user_file_path(@user, file),
+    method: :delete, class: "button tiny radius" %>
+    <% end %>
+  </div>
+<% end %>

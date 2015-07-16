@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="columns large-12">
+    <h1>Upload files</h1>
+
+    <%= form_for [@user, @user_file] do |f| %>
+    <%= f.label :file, "File" %><br />
+    <%= f.file_field :file %>
+
+      <%= f.submit "Add File", class: "button tiny radius"  %>
+    <% end %>
+
+  </div>
+</div>

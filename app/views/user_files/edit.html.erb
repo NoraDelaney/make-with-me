@@ -1,0 +1,9 @@
+<div class="row">
+
+  <%= form_for [@user, @user_file] do |f| %>
+  <%= f.label :file, "File" %><br />
+  <%= f.file_field :file %>
+
+    <%= f.submit "Add File", class: "button tiny radius"  %>
+  <% end %>
+</div>

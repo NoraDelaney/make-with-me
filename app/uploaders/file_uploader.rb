@@ -1,11 +1,11 @@
 # encoding: utf-8
-class UserFileUploader < CarrierWave::Uploader::Base
+class FileUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  if Rails.env.production? || Rails.env.development?
+  if Rails.env.production?
     storage :fog
   else
     storage :file
@@ -44,11 +44,25 @@ class UserFileUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [200, 200]
   end
 
+  version :web_thumb do
+    process :thumbnail_pdf
+  end
+
+def thumbnail_pdf
+  manipulate! do |img|
+    img.format("png", 1)
+    img.resize("150x150")
+    img = yield(img) if block_given?
+    img
+  end
+end
+
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_white_list
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_white_list
+    %w(jpg jpeg gif png pdf doc docx html)
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here,

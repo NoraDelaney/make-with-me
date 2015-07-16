@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'users#index'
   devise_for :users
   resources :users do
-    resources :reviews, except: [:index, :show]
+    resources :user_files, except: [:index, :show]
   end
   resources :conversations, only: [:index, :show, :new, :create] do
     member do
