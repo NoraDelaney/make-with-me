@@ -43,10 +43,11 @@
   </div>
 </div>
 
-
+<% if !@user_files.empty? %>
 <div class="row">
   <div class="columns large-12">
     <div class="panel">
+      <h3 class="portfolio_text">Images</h3>
   <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
     <% @user_files.each do |file| %>
     <li>
@@ -57,14 +58,14 @@
           <%= file.id %>
       </div>
 
-      <div class="img_space">
-        <%= image_tag(file.file_url(:showcase)) %>
-      </div>
+
+        <%= image_tag(file.file_url(:showcase)) %><br>
+
       <% if current_user && current_user.id == @user.id %>
         <%= link_to "Change", edit_user_user_file_path(@user, file),
-        class: "button tiny radius" %>
+        class: "portfolio button tiny radius" %>
         <%= link_to "Delete", user_user_file_path(@user, file),
-        method: :delete, class: "button tiny radius" %>
+        method: :delete, class: "portfolio button tiny radius" %>
         <% end %>
       </li>
     <% end %>
@@ -72,7 +73,12 @@
 </div>
 </div>
 </div>
+<% end %>
 
+<% if !@pdfs.empty? %>
+<h3 class="portfolio_text">PDFs</h3>
+<div class="row">
+  <div class="columns large-12">
   <% @pdfs.each do |pdf| %>
   <div class="columns small-3">
 <div class='user_number' style="visibility: collapse">
@@ -82,11 +88,15 @@
     <%= pdf.id %>
   </div>
     <% pdf.name %>
-    <%= link_to pdf.name, pdf.user_pdf_url %>
+    <%= link_to pdf.name, pdf.user_pdf_url %><br>
     <% if current_user && current_user.id == @user.id %>
     <%= link_to "Change", edit_user_pdf_path(@user, pdf),
      class: "button tiny radius" %>
     <%= link_to "Delete", user_pdf_path(@user, pdf),
     method: :delete, class: "button tiny radius" %>
     <% end %>
+  </div>
+<% end %>
+</div>
+</div>
 <% end %>
