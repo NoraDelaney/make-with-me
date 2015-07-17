@@ -11,54 +11,49 @@ feature "User edits profile" do
 # [ ] If I do not enter valid information, I am given an error message and
 # brought back to the edit form.
 
+  scenario "user enters valid information and edits profile" do
 
+    user = FactoryGirl.create(:user)
 
+    visit new_user_session_path
 
-scenario "user enters valid information and edits profile" do
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
 
-  user = FactoryGirl.create(:user)
+    click_button "Log in"
 
-  visit new_user_session_path
+    click_link user.username
 
-  fill_in "Email", with: user.email
-  fill_in "Password", with: user.password
+    click_link "Edit Profile"
 
-  click_button "Log in"
+    fill_in "First name", with: "BANANA!!"
 
-  click_link user.username
+    click_button "Edit Profile"
 
-  click_link "Edit Profile"
+    expect(page).to have_content("User updated.")
+    expect(page).to have_content("BANANA!!")
+  end
 
-  fill_in "First name", with: "BANANA!!"
+  scenario "user enters invalid information" do
 
-  click_button "Edit Profile"
+    user = FactoryGirl.create(:user)
 
-  expect(page).to have_content("User updated.")
-  expect(page).to have_content("BANANA!!")
-end
+    visit new_user_session_path
 
-scenario "user enters invalid information" do
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
 
-user = FactoryGirl.create(:user)
+    click_button "Log in"
 
-  visit new_user_session_path
+    click_link user.username
 
-  fill_in "Email", with: user.email
-  fill_in "Password", with: user.password
+    click_link "Edit Profile"
 
-  click_button "Log in"
+    fill_in "First name", with: ""
 
-  click_link user.username
+    click_button "Edit Profile"
 
-  click_link "Edit Profile"
-  
-  fill_in "First name", with: ""
-
-  click_button "Edit Profile"
-
-  expect(page).to have_content("First name can't be blank")
-  expect(page).to have_content("Edit your profile and describe yourself and your art.")
-end
-
-
+    expect(page).to have_content("First name can't be blank")
+    expect(page).to have_content("describe yourself and your art.")
+  end
 end
