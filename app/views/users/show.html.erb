@@ -26,21 +26,22 @@
 </div>
 
 <div class="row">
-  <div class="columns small-4">
+  <div class="columns small-3">
     <% if current_user && current_user.id == @user.id %>
       <%= link_to "Edit Profile", edit_user_path(@user), class: "button small radius" %>
     <% end %>
   </div>
-  <div class="columns small-4">
+  <div class="columns small-3">
     <% if current_user && current_user.id == @user.id %>
       <%= link_to "Add an Image", new_user_user_file_path(@user), class: "button left small radius" %><br />
     <% end %>
   </div>
-  <div class="columns small-4">
+  <div class="columns small-3">
     <% if current_user && current_user.id == @user.id %>
       <%= link_to "Add a PDF", new_user_pdf_path(@user), class: "button left small radius" %><br />
     <% end %>
   </div>
+</div>
 </div>
 
 <% if !@user_files.empty? %>
