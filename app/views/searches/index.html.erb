@@ -15,19 +15,4 @@
       </table>
     <% end %>
     </div
-    <div class="small-5 columns">
-    <% if !@users.empty? %>
-      <table>
-        <tr>
-          <th><h4>Explore projects</h4></th>
-        </tr>
-
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= link_to user.username, user_path(user) %></td>
-          </tr>
-        <% end %>
-      </table>
-    <% end %>
-  </div>
-</div>
+    
