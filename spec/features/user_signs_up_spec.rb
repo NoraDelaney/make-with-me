@@ -22,7 +22,7 @@ feature 'user registers', %Q{
     fill_in 'Last name', with: 'Example'
     fill_in 'Username', with: 'John'
     fill_in 'City', with: 'Boston'
-    fill_in 'State', with: 'MA'
+    select('Massachusetts', from: 'State')
 
     click_button 'Sign up'
 
