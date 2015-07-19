@@ -3,4 +3,5 @@ class ArtType < ActiveRecord::Base
   has_many :users, through: :user_arts
 
   validates :name, presence: true
+  accepts_nested_attributes_for :user_arts
 end

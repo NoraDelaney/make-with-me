@@ -25,6 +25,18 @@
   </div>
 </div>
 
+<% if current_user && current_user.id != @user.id %>
+  <% if current_user.liked? @user %>
+  <%= link_to "Undo", dislike_user_path(@user), class: 'vote', method: :put, remote: true, data: { toggle_text: 'Favorite', toggle_href: like_user_path(@user), id: @user.id } %>
+  <% else %>
+  <%= link_to "Favorite", like_user_path(@user), class: 'vote', method: :put, remote: true, data: { toggle_text: 'Undo', toggle_href: dislike_user_path(@user), id: @user.id } %>
+  <% end %>
+  <span class="votes-count" data-id="<%= @user.id %>">
+  <%= @user.get_likes.size %>
+</span>
+  favorites.
+  <% end %>
+
 <div class="row">
   <div class="columns small-3">
     <% if current_user && current_user.id == @user.id %>
