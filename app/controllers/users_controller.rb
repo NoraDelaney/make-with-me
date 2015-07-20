@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @art_types = ArtType.all
   end
 
   def update
@@ -41,7 +42,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(
       :email, :encrypted_password, :username, :first_name, :last_name,
-      :description, :city, :state, :website, :profile_photo
+      :description, :city, :state, :website, :profile_photo, art_type_ids: []
     )
   end
 end

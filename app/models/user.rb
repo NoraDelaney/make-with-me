@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :art_types, through: :user_arts
   has_many :project_memberships
   has_many :projects, through: :project_memberships
+  accepts_nested_attributes_for :art_types
 
   validates :email, presence: true
   validates :encrypted_password, presence: true

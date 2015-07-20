@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :user_files, except: [:index, :show]
     resources :pdfs, except: [:index, :show]
+    resources :art_types
   end
   resources :conversations, only: [:index, :show, :new, :create] do
     member do
