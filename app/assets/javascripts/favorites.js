@@ -9,17 +9,17 @@ $(function () {
     })
 
     .done(function(votes) {
-      var new_url = url.split("/");
-      new_url.pop();
+      var newUrl = url.split("/");
+      newUrl.pop();
       if ($(".vote").text() == "Undo") {
       $(".vote").text("Favorite");
-      new_url.push("like");
+      newUrl.push("like");
     } else {
       $(".vote").text("Undo");
-      new_url.push("dislike");
+      newUrl.push("dislike");
     }
-    new_url = new_url.join("/");
-    $(".vote").attr("href", new_url)
+    newUrl = newUrl.join("/");
+    $(".vote").attr("href", newUrl);
     $(".votes-count").text(votes.count);
     });
   });

@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.liked_by current_user
     if request.xhr?
-      render json: {count: @user.get_likes.size, id: params[:id]}
+      render json: { count: @user.get_likes.size, id: params[:id] }
     else
       redirect_to @user
     end
@@ -52,14 +52,11 @@ class UsersController < ApplicationController
     @user.disliked_by current_user
 
     if request.xhr?
-      render json: {count: @user.get_likes.size, id: params[:id]}
+      render json: { count: @user.get_likes.size, id: params[:id] }
     else
-    redirect_to @user
+      redirect_to @user
     end
   end
-
-
-
 
   private
 

@@ -12,17 +12,13 @@ feature "user views match profile" do
 # [ ] I should see the match’s profile, including description, username, first
 # first name, city, state, and last name.
 
-before(:each) do
-  user = FactoryGirl.create(:user, username: 'Jean', description: 'poetry')
-end
-
   scenario 'valid search' do
     visit users_path
     fill_in :q, with: 'poe'
     click_button 'Search'
 
     click_link ('Jean')
-    expect(page).to_have_content(user.usename)
+    expect(page).to_have_content(user.username)
     expect(page).to_have_content(user.description)
     expect(page).to_have_content(user.last_name)
     expect(page).to_have_content(user.first_name)
