@@ -5,5 +5,4 @@ class ArtType < ActiveRecord::Base
  VALID_TYPES = ["visual art", "writing", "music", "dance", "theater", "filmmaking"]
   validates :name, presence: true, inclusion: { in: VALID_TYPES }
 
-
 end
