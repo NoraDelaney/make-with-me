@@ -29,8 +29,15 @@ class UsersController < ApplicationController
   end
 
   def update
+  
     @user = User.find(params[:id])
+
     if @user.update(user_params)
+      id_array = params[:user][:user_arts][:art_type][:art_type_ids]
+      id_array.each do |art_id|
+        UserArt.find_or_create_by(user_id: @user.id, art_type_id: art_id)
+      end
+
       flash[:success] = "User updated."
       redirect_to user_path(@user)
     else
