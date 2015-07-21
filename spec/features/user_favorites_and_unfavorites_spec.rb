@@ -22,12 +22,13 @@ feature "User favorites and unfavorites" do
     click_button "Log in"
 
     visit user_path(user2)
+    save_and_open_page
     click_link "Favorite"
 
     expect(page).to have_content("Undo")
     expect(page).to have_content("1 favorites.")
 
-    click_like "Undo"
+    click_link "Undo"
 
     expect(page).to have_content("Favorite")
     expect(page).to have_content("0 favorites.")
