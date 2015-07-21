@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 feature "User favorites and unfavorites" do
-# As a signed-in user
-# I want to favorite and unfavorite other users' profiles.
-#
-#
-# Acceptance Criteria
-# [ ] If I favorite another user's profile, the favorite count increments
-# and I see a link to "Undo".
-# [ ] If I unfavorite another user's profile, the favorite count decrements
-# and I see a link to "Favorite".
+  # As a signed-in user
+  # I want to favorite and unfavorite other users' profiles.
+  #
+  #
+  # Acceptance Criteria
+  # [ ] If I favorite another user's profile, the favorite count increments
+  # and I see a link to "Undo".
+  # [ ] If I unfavorite another user's profile, the favorite count decrements
+  # and I see a link to "Favorite".
 
   scenario "user favorites another profile and revokes favorite", js: true do
 

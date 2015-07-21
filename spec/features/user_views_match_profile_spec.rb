@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "user views match profile" do
-  
+
   # As a signed-in user
   # I want to see the details of a match
   # So that I can decide if I want to collaborate with them
