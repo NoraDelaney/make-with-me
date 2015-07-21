@@ -6,10 +6,12 @@ feature "User favorites and unfavorites" do
 #
 #
 # Acceptance Criteria
-# [ ] If I favorite another user's profile, the favorite count increments and I see a link to "Undo".
-# [ ] If I unfavorite another user's profile, the favorite count decrements and I see a link to "Favorite".
+# [ ] If I favorite another user's profile, the favorite count increments
+# and I see a link to "Undo".
+# [ ] If I unfavorite another user's profile, the favorite count decrements
+# and I see a link to "Favorite".
 
-  scenario "user favorites another user's profile and then revokes favorite", js: true do
+  scenario "user favorites another profile and revokes favorite", js: true do
 
     user = FactoryGirl.create(:user)
     user2 = FactoryGirl.create(:user)
@@ -22,7 +24,7 @@ feature "User favorites and unfavorites" do
     click_button "Log in"
 
     visit user_path(user2)
-    save_and_open_page
+
     click_link "Favorite"
 
     expect(page).to have_content("Undo")
