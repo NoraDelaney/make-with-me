@@ -19,11 +19,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user_files = @user.user_files
     @pdfs = @user.pdfs
+    @art_types = @user.art_types
   end
 
   def edit
     @user = User.find(params[:id])
     @art_types = ArtType.all
+    @user_art = @user.user_arts.build
   end
 
   def update
@@ -41,8 +43,18 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :email, :encrypted_password, :username, :first_name, :last_name,
-      :description, :city, :state, :website, :profile_photo, art_type_ids: []
+      :email,
+      :encrypted_password,
+      :username,
+      :first_name,
+      :last_name,
+      :description,
+      :city,
+      :state,
+      :website,
+      :profile_photo,
+      user_arts_attributes: [:id, :name, art_type_attributes: [:id]],
+      art_type_ids: []
     )
   end
 end

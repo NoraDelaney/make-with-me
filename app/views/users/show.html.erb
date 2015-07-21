@@ -21,6 +21,16 @@
       <% if @user.description != nil %>
           <span><b>About me:</b> <%= @user.description %></span><br />
       <% end %>
+      <% if !@art_types.empty? %>
+      <ul>
+        <span><b>Art types:</b></span>
+        <li>
+        <% @art_types.each do |art| %>
+          <%= art.name %>
+        <% end %>
+        </li>
+      </ul>
+      <% end %>
     </div>
   </div>
 </div>
