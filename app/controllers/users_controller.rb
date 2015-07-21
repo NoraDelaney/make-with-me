@@ -25,17 +25,18 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @art_types = ArtType.all
-    @user_art = @user.user_arts.build
   end
 
   def update
-  
+
     @user = User.find(params[:id])
 
     if @user.update(user_params)
+      UserArt.where(user_id: @user.id).destroy_all
+
       id_array = params[:user][:user_arts][:art_type][:art_type_ids]
       id_array.each do |art_id|
-        UserArt.find_or_create_by(user_id: @user.id, art_type_id: art_id)
+        UserArt.create(user_id: @user.id, art_type_id: art_id)
       end
 
       flash[:success] = "User updated."
@@ -60,7 +61,7 @@ class UsersController < ApplicationController
       :state,
       :website,
       :profile_photo,
-      user_arts_attributes: [:id, :name, art_type_attributes: [:id]],
+      # user_arts_attributes: [:id, :name, art_type_attributes: [:id]],
       art_type_ids: []
     )
   end

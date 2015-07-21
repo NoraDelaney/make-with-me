@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   pg_search_scope :search,
     against: [:first_name, :last_name, :username, :description, :city, :state,
               :website],
-    associated_against: {art_types: :name},
+    associated_against: { art_types: :name },
     using: {
       tsearch: { prefix: true }
     }

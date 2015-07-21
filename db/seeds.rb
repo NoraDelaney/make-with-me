@@ -6,4 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-ArtType.create([{ name: "visual art", name: "writing", name: "music", name: "dance", name: "theater", name: "filmmaking"}])
+ArtType.create([{
+  name: "visual art",
+  name: "writing",
+  name: "music",
+  name: "dance",
+  name: "theater",
+  name: "filmmaking"
+  }])
