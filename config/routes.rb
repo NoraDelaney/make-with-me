@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     resources :user_files, except: [:index, :show]
     resources :pdfs, except: [:index, :show]
   end
+  resources :users do
+    member do
+      put "like", to: "users#like"
+      put "dislike", to: "users#dislike"
+    end
+  end
   resources :conversations, only: [:index, :show, :new, :create] do
     member do
       post :reply

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   acts_as_messageable
+  acts_as_votable
+  acts_as_voter
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
@@ -22,6 +24,8 @@ class User < ActiveRecord::Base
   has_many :art_types, through: :user_arts
   has_many :project_memberships
   has_many :projects, through: :project_memberships
+
+  accepts_nested_attributes_for :user_arts
 
   validates :email, presence: true
   validates :encrypted_password, presence: true

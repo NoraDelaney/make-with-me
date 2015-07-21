@@ -8,6 +8,7 @@ gem 'rails', '4.2.2'
 gem 'pg'
 gem 'pg_search'
 gem 'mailboxer'
+gem 'acts_as_votable', '~> 0.10.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -48,6 +49,8 @@ end
 
 group :test do
   gem 'coveralls', require: false
+  gem 'database_cleaner'
+  gem 'poltergeist'
 end
 
 group :production do
