@@ -28,7 +28,7 @@ class PdfsController < ApplicationController
     @pdf = Pdf.find(params[:id])
     if (current_user && current_user.id == @pdf.user_id) ||
         (current_user && current_user.admin?)
-      if @pdf.update(user_file_params)
+      if @pdf.update(pdf_params)
         flash[:success] = "File updated"
         redirect_to user_path(@user)
       else

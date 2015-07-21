@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   has_many :art_types, through: :user_arts
   has_many :project_memberships
   has_many :projects, through: :project_memberships
-
+  accepts_nested_attributes_for :art_types
   accepts_nested_attributes_for :user_arts
 
   validates :email, presence: true
@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
   pg_search_scope :search,
     against: [:first_name, :last_name, :username, :description, :city, :state,
               :website],
+    associated_against: { art_types: :name },
     using: {
       tsearch: { prefix: true }
     }

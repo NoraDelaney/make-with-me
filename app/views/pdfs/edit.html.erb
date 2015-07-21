@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="columns large-12">
+    <h1>Upload PDF</h1>
+
+    <%= form_for [@user, @pdf] do |f| %>
+
+    <%= f.label :name, "File name" %><br />
+    <%= f.text_field :name %>
+
+    <%= f.label :user_pdf, "PDF" %><br />
+    <%= f.file_field :user_pdf %>
+
+      <%= f.submit "Add PDF", class: "button tiny radius"  %>
+    <% end %>
+
+  </div>
+</div>

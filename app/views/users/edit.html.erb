@@ -20,10 +20,17 @@
       <%= f.label :description, "About Me" %>
       <%= f.text_area :description %>
 
+      <%= fields_for "user", @art_type do |art_form| %>
+        <%= art_form.label "Select your art forms" %>
+        <%= art_form.collection_check_boxes :art_type_ids,
+        @art_types, :id, :name %>
+      <% end %>
+
       <%= f.label :profile_photo, "Profile Photo" %><br />
       <%= f.file_field :profile_photo %>
 
       <%= f.submit "Edit Profile", class: "button small radius"  %>
+
     <%- end -%>
   </div>
   </div>
