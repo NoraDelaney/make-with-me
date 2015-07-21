@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @art_types = ArtType.all
+    @users = User.all
   end
 
   def update
@@ -44,6 +45,27 @@ class UsersController < ApplicationController
     else
       flash[:alert] = @user.errors.full_messages.join(".  ")
       render :edit
+    end
+  end
+
+  def like
+    @user = User.find(params[:id])
+    @user.liked_by current_user
+    if request.xhr?
+      render json: { count: @user.get_likes.size, id: params[:id] }
+    else
+      redirect_to @user
+    end
+  end
+
+  def dislike
+    @user = User.find(params[:id])
+    @user.disliked_by current_user
+
+    if request.xhr?
+      render json: { count: @user.get_likes.size, id: params[:id] }
+    else
+      redirect_to @user
     end
   end
 

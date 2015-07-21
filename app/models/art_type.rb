@@ -12,5 +12,6 @@ class ArtType < ActiveRecord::Base
     "filmmaking"
   ]
   validates :name, presence: true, inclusion: { in: VALID_TYPES }
+  accepts_nested_attributes_for :user_arts
 
 end
