@@ -13,4 +13,4 @@ ArtType.create([{
   name: "dance",
   name: "theater",
   name: "filmmaking"
-  }])
+              }])
