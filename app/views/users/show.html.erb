@@ -8,11 +8,38 @@
     <h1> <%= @user.username %> </h1>
   </div>
 </div>
+
 <div class="row">
-  <div class="columns large-12">
-    <div class="panel">
+  <div class="columns small-12">
+<% if current_user && current_user.id != @user.id %>
+  <% if current_user.liked? @user %>
+  <%= link_to "Undo", dislike_user_path(@user), class: 'vote', method: :put, remote: true %>
+  <% else %>
+  <%= link_to "Favorite", like_user_path(@user), class: 'vote', method: :put, remote: true %>
+  <% end %>
+  <% end %>
+  <span class="votes-count" data-id="<%= @user.id %>">
+  <%= @user.get_likes.size %>
+</span>
+  favorites.
+</div>
+</div>
+
+    <% if current_user && current_user.id == @user.id %>
+    <ul class="button-group">
+    <li><%= link_to "Edit Profile", edit_user_path(@user), class: "special_button button tiny radius" %></li>
+    <li><%= link_to "Add an Image", new_user_user_file_path(@user), class: "special_button button tiny" %></li>
+    <li><%= link_to "Add a PDF", new_user_pdf_path(@user), class: "special_button button tiny" %></li>
+    </ul>
+    <% end %>
+
+
+    <div class="panel bio">
+    <h3>Bio</h3>
+
       <b>First name:</b> <%= @user.first_name %><br />
       <b>Last name:</b> <%= @user.last_name %><br />
+      <b>Email:</b> <%= @user.email %><br />
       <b>City:</b> <%= @user.city %><br />
       <b>State:</b> <%= @user.state %><br />
       <% if @user.website != nil %>
@@ -34,97 +61,65 @@
       </ul>
       <% end %>
     </div>
-  </div>
-</div>
 
-<% if current_user && current_user.id != @user.id %>
-  <% if current_user.liked? @user %>
-  <%= link_to "Undo", dislike_user_path(@user), class: 'vote', method: :put, remote: true %>
-  <% else %>
-  <%= link_to "Favorite", like_user_path(@user), class: 'vote', method: :put, remote: true %>
-  <% end %>
-  <% end %>
-  <span class="votes-count" data-id="<%= @user.id %>">
-  <%= @user.get_likes.size %>
-</span>
-  favorites.
-
-
-<div class="row">
-  <div class="columns small-3">
-    <% if current_user && current_user.id == @user.id %>
-      <%= link_to "Edit Profile", edit_user_path(@user), class: "button small radius" %>
-    <% end %>
-  </div>
-  <div class="columns small-3">
-    <% if current_user && current_user.id == @user.id %>
-      <%= link_to "Add an Image", new_user_user_file_path(@user), class: "button left small radius" %><br />
-    <% end %>
-  </div>
-  <div class="columns small-3">
-    <% if current_user && current_user.id == @user.id %>
-      <%= link_to "Add a PDF", new_user_pdf_path(@user), class: "button left small radius" %><br />
-    <% end %>
-  </div>
-</div>
-</div>
-
-<% if !@user_files.empty? %>
-<div class="row">
-  <div class="columns large-12">
-    <div class="panel">
-      <h3 class="portfolio_text">Images</h3>
-  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-    <% @user_files.each do |file| %>
-    <li>
-        <div class='user_number' style="visibility: collapse">
-          <%= @user.id %>
-        </div>
-        <div class='user_file_number' style="visibility: collapse">
-          <%= file.id %>
-      </div>
-
-
-        <%= image_tag(file.file_url(:showcase)) %><br>
-
-      <% if current_user && current_user.id == @user.id %>
-        <%= link_to "Change", edit_user_user_file_path(@user, file),
-        class: "portfolio button tiny radius" %>
-        <%= link_to "Delete", user_user_file_path(@user, file),
-        method: :delete, class: "portfolio button tiny radius" %>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-</div>
-</div>
-<% end %>
 
 <% if !@pdfs.empty? %>
-<div class="panel">
-<h3 class="portfolio_text">PDFs</h3>
-<div class="row">
-  <div class="columns large-12">
-  <% @pdfs.each do |pdf| %>
-  <div class="pdf_stuff">
-<div class='user_number' style="visibility: collapse">
-    <%= @user.id %>
-  </div>
-  <div class='pdf_number' style="visibility: collapse">
-    <%= pdf.id %>
-  </div>
-    <% pdf.name %>
-    <%= link_to pdf.name, pdf.user_pdf_url %><br>
-    <% if current_user && current_user.id == @user.id %>
-    <%= link_to "Change", edit_user_pdf_path(@user, pdf),
-     class: "button tiny radius" %>
-    <%= link_to "Delete", user_pdf_path(@user, pdf),
-    method: :delete, class: "button tiny radius" %>
-    <% end %>
-  </div>
+<ul class="accordion" data-accordion>
+  <li class="accordion-navigation">
+    <a href="#panel1a">Document Portfolio</a>
+      <div id="panel1a" class="content">
+      <% @pdfs.each do |pdf| %>
+        <div class="pdf_stuff">
+          <div class='user_number' style="visibility: collapse">
+            <%= @user.id %>
+          </div>
+          <div class='pdf_number' style="visibility: collapse">
+            <%= pdf.id %>
+          </div>
+          <% pdf.name %>
+          <%= link_to pdf.name, pdf.user_pdf_url %><br>
+          <% if current_user && current_user.id == @user.id %>
+            <%= link_to "Change", edit_user_pdf_path(@user, pdf),
+            class: "button tiny radius" %>
+            <%= link_to "Delete", user_pdf_path(@user, pdf),
+            method: :delete, class: "button tiny radius" %>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  </li>
+  <% end %>
+  <% if !@user_files.empty? %>
+  <li class="accordion-navigation">
+    <a href="#panel2a">Visual Portfolio</a>
+    <div id="panel2a" class="content">
+        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+          <% @user_files.each do |file| %>
+          <li>
+            <div class='user_number' style="visibility: collapse">
+              <%= @user.id %>
+            </div>
+            <div class='user_file_number' style="visibility: collapse">
+            <%= file.id %>
+            </div>
+
+          <%= image_tag(file.file_url(:showcase)) %><br>
+
+          <% if current_user && current_user.id == @user.id %>
+          <%= link_to "Change", edit_user_user_file_path(@user, file),
+          class: "portfolio button tiny radius" %>
+          <%= link_to "Delete", user_user_file_path(@user, file),
+          method: :delete, class: "portfolio button tiny radius" %>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </li>
 <% end %>
-</div>
-</div>
-</div>
-<% end %>
+</ul>
+
+
+
+<!-- <script src="js/foundation/foundation.equalizer.js"></script>
+<script src="js/foundation/foundation.accordion.js"></script> -->
