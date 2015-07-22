@@ -2,6 +2,8 @@
   <div class="columns large-12">
     <h1>Upload files</h1>
 
+    <h3>Show off your paintings, drawings, and photos.</h3>
+
     <%= form_for [@user, @user_file] do |f| %>
     <%= f.label :file, "File" %><br />
     <%= f.file_field :file %>
