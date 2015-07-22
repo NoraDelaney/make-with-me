@@ -18,3 +18,5 @@
 
 
 $(function(){ $(document).foundation(); });
+$(document).foundation('accordion', 'reflow');
+$(document).foundation('equalizer', 'reflow');
