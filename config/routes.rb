@@ -12,15 +12,11 @@ Rails.application.routes.draw do
       put "dislike", to: "users#dislike"
     end
   end
-  resources :conversations, only: [:index, :show, :new, :create] do
-    member do
-      post :reply
-      post :trash
-      post :untrash
+  resources :conversations do
+      resources :messages
     end
   end
 
   # as :user do
   #   get 'users', to: 'users_path', as: :user_root
   # end
-end
