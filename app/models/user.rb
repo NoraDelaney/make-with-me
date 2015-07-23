@@ -4,19 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  acts_as_messageable
+
+
   acts_as_votable
   acts_as_voter
 
   mount_uploader :profile_photo, ProfilePhotoUploader
-
-  def name
-    username
-  end
-
-  def mailboxer_email(_object)
-    email
-  end
 
   has_many :user_arts
   has_many :user_files
@@ -26,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :projects, through: :project_memberships
   accepts_nested_attributes_for :art_types
   accepts_nested_attributes_for :user_arts
+  has_many :conversations, :foreign_key => :sender_id
 
   validates :email, presence: true
   validates :encrypted_password, presence: true
