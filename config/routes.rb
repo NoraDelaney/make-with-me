@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       put "dislike", to: "users#dislike"
     end
   end
+
+  resources :charts, only: [:index]
   resources :conversations do
       resources :messages
     end
