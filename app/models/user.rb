@@ -11,14 +11,6 @@ class User < ActiveRecord::Base
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
-  def name
-    username
-  end
-
-  def mailboxer_email(_object)
-    email
-  end
-
   has_many :user_arts
   has_many :user_files
   has_many :pdfs

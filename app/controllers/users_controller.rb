@@ -52,6 +52,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.liked_by current_user
     if request.xhr?
+      VoteMailer.new_vote(@vote).deliver_later
       render json: { count: @user.get_likes.size, id: params[:id] }
     else
       redirect_to @user
