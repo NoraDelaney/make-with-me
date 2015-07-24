@@ -12,7 +12,7 @@ feature "User favorites and unfavorites" do
   # and I see a link to "Favorite".
 
   scenario "user favorites another profile and revokes favorite", js: true do
-    ActionMailer::Base.deliveries.clear
+    # ActionMailer::Base.deliveries.clear
 
     user = FactoryGirl.create(:user)
     user2 = FactoryGirl.create(:user)
@@ -30,7 +30,7 @@ feature "User favorites and unfavorites" do
 
     expect(page).to have_content("Undo")
     expect(page).to have_content("1 favorites.")
-    expect(ActionMailer::Base.deliveries.count).to eq(1)
+    # expect(ActionMailer::Base.deliveries.count).to eq(1)
 
     click_link "Undo"
 
