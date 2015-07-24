@@ -10,6 +10,8 @@ class ChartsController < ApplicationController
       data << item
     end
 
+    
+
     respond_to do |format|
       format.html
       format.json do render json: data
