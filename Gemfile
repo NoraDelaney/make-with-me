@@ -8,6 +8,7 @@ gem 'rails', '4.2.2'
 gem 'pg'
 gem 'pg_search'
 gem 'mailboxer'
+gem 'kaminari'
 gem 'acts_as_votable', '~> 0.10.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
