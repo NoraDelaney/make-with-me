@@ -4,7 +4,7 @@
   <title>Make With Me</title>
   <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Cabin" %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag "vendor/modernizr" %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -25,6 +25,8 @@
   </div>
 
   <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
   <%= yield :extra_footer %>
 </body>
 </html>
