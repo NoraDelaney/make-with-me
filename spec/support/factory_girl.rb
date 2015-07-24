@@ -14,5 +14,4 @@ FactoryGirl.define do
     username { Faker::Internet.user_name }
     admin false
   end
-
 end

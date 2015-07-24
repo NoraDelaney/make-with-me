@@ -43,7 +43,7 @@
   <b>City:</b> <%= @user.city %><br />
   <b>State:</b> <%= @user.state %><br />
   <% if @user.website != nil %>
-    <b>Website:</b> <%= @user.website %><br />
+    <b>Website:</b> <a href="<%= @user.website %>"><%= @user.website %></a><br />
   <% end %>
   <% if @user.description != nil %>
       <b>About me:</b> <%= @user.description %><br />
