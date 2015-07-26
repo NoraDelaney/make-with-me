@@ -2,29 +2,15 @@
 
 ![Build Status](https://codeship.com/projects/500ce740-0683-0133-9e25-5e6c74a52e2c/status?branch=master)![Code Climate](https://codeclimate.com/github/NoraDelaney/make-with-me.png) ![Coverage Status](https://coveralls.io/repos/NoraDelaney/make-with-me/badge.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Make With ME
+============
 
-Things you may want to cover:
+![alt tag](https://raw.github.com/NoraDelaney/make-with-me/master/app/assets/images/SplitShire-1233.jpg)
 
-* Ruby version
+Make With Me allows users to find partners for creative collaborations. Describe and share your work, upload a portfolio of images and documents, and search for collaborators. Have a look at the Art Chart to see what art forms other users practice. When you favorite another user, they will receive a message letting them know you like their work and inviting them to look at your profile.
 
-* System dependencies
+Make With Me is a Ruby on Rails app that uses AWS cloud storage, AJAX, Highcharts integration, a PostgreSQL database, Action Mailer and a Foundation front-end.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### To Dos:
+* Integrate in-app messaging system.
+* Create project pages for users to join together for shared projects.
