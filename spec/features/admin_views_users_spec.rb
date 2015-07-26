@@ -5,7 +5,7 @@ feature "admin views users" do
 # I want to see a list of users and email addresses
 # So that I can view who is using my website.
 #
-# 
+#
 # Acceptance Criteria
 # [ ] I can see a link to view a list of users from the homepage
 # [ ] The page should contain the user's full name and email address.
