@@ -8,6 +8,6 @@
 # #
 # #
 # # Acceptance Criteria
-# # [ ] From my profile page I can go to the my messaging page and send a message.
+# # [ ] From my profile page I can go to my messaging page and send a message.
 # # [ ] When I am sent a message, I can read it in my inbox.
 # end
