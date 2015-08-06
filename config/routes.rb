@@ -14,11 +14,4 @@ Rails.application.routes.draw do
   end
 
   resources :charts, only: [:index]
-  resources :conversations do
-      resources :messages
-    end
   end
-
-  # as :user do
-  #   get 'users', to: 'users_path', as: :user_root
-  # end
