@@ -11,6 +11,7 @@ class ArtType < ActiveRecord::Base
     "theater",
     "filmmaking"
   ]
+
   validates :name, presence: true, inclusion: { in: VALID_TYPES }
 
 end

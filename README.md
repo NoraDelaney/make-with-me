@@ -10,5 +10,6 @@ Make With Me allows users to find partners for creative collaborations. Describe
 Make With Me is a Ruby on Rails app that uses AWS cloud storage, AJAX, Highcharts integration, Devise authentication, a PostgreSQL database, Action Mailer and a Foundation front-end.
 
 ### To Dos:
-* Integrate in-app messaging system.
-* Create project pages for users to join together for shared projects.
+* Integrate messaging system.
+* Create project pages for for shared projects.
+* Create admin features.
