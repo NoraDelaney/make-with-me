@@ -12,6 +12,9 @@ Rails.application.routes.draw do
       put "dislike", to: "users#dislike"
     end
   end
+  namespace :admin do
+    resources :users, only: [:index]
+  end
 
   resources :charts, only: [:index]
   end
