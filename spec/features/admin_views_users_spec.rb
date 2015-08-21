@@ -11,20 +11,20 @@ feature "admin views users" do
 # [ ] I can see a link to view a list of users from the homepage
 # [ ] The page should contain the user's full name and email address.
 # [ ] If I am not an administrator, I should be redirected to the homepage.
-
-let(:admin) { FactoryGirl.create(:user, role: 'admin') }
-let!(:user) { FactoryGirl.create(:user) }
-
-  scenario 'admin visits users index' do
-    login_as(admin)
-    visit '/admin/users'
-    expect(page).to have_content(user.email)
-  end
-
-  scenario 'unauthorized users are redirected' do
-    login_as(user)
-    visit '/admin/users'
-    expect(page).to have_content('not authorized')
-    expect(current_path).to eq(root_path)
-  end
-end
+# 
+# let(:admin) { FactoryGirl.create(:user, role: 'admin') }
+# let!(:user) { FactoryGirl.create(:user) }
+#
+#   scenario 'admin visits users index' do
+#     login_as(admin)
+#     visit '/admin/users'
+#     expect(page).to have_content(user.email)
+#   end
+#
+#   scenario 'unauthorized users are redirected' do
+#     login_as(user)
+#     visit '/admin/users'
+#     expect(page).to have_content('not authorized')
+#     expect(current_path).to eq(root_path)
+#   end
+# end
