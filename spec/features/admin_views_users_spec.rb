@@ -20,4 +20,11 @@ let!(:user) { FactoryGirl.create(:user) }
     visit '/admin/users'
     expect(page).to have_content(user.email)
   end
+
+  scenario 'unauthorized users are redirected' do
+    login_as(user)
+    visit '/admin/users'
+    expect(page).to have_content('not authorized')
+    expect(current_path).to eq(root_path)
+  end
 end

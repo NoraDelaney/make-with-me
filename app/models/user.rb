@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_many :projects, through: :project_memberships
   accepts_nested_attributes_for :art_types
   accepts_nested_attributes_for :user_arts
-  has_many :conversations, :foreign_key => :sender_id
+  has_many :conversations, foreign_key: :sender_id
 
   validates :email, presence: true
   validates :encrypted_password, presence: true
@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true
   validates :username, presence: true
+
+  def is_admin?
+    role == 'admin'
+  end
 
   include PgSearch
   pg_search_scope :search,
